@@ -9,7 +9,15 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('プロキシできました!!!!');
+  console.log('proxied', event.request);
+  
+  if (event.request.url !== 'https://teramotodaiki.github.io/service-worker-test/index.html') {
+    // スルー
+    event.respondWith(
+      fetch(event.request)
+    );
+    return;
+  }
 
   const html = `
 <!DOCTYPE html>
@@ -18,8 +26,6 @@ self.addEventListener('fetch', function(event) {
         <meta charset="utf-8">
         <title>Service Worker Test</title>
         <script type="text/javascript">
-            alert('v2/このアラートはキャッシュされたHTMLからのアレです！');
-
             if ('serviceWorker' in navigator) {
               navigator.serviceWorker.register('./sw.js').then(function(registration) {
                 // 登録成功
