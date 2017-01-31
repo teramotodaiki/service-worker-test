@@ -39,7 +39,7 @@ self.addEventListener('fetch', function(event) {
         </script>
     </head>
     <body>
-        おめでとうございます！キャッシュです！ 5
+        おめでとうございます！キャッシュです！ 6
     </body>
 </html>
 `;
