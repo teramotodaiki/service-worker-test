@@ -11,7 +11,12 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
   console.log('proxied', event.request.url);
   
-  if (event.request.url.indexOf('https://teramotodaiki.github.io/service-worker-test/') === -1) {
+  if (
+    [
+      'https://teramotodaiki.github.io/service-worker-test/',
+      'https://teramotodaiki.github.io/service-worker-test/index.html'
+    ].includes(event.request.url) === false
+  ) {
     // スルー
     event.respondWith(
       fetch(event.request)
