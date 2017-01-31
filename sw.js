@@ -11,7 +11,7 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
   console.log('proxied', event.request);
   
-  if (event.request.url !== 'https://teramotodaiki.github.io/service-worker-test/index.html') {
+  if (event.request.url.indexOf('https://teramotodaiki.github.io/service-worker-test/') === -1) {
     // スルー
     event.respondWith(
       fetch(event.request)
@@ -38,7 +38,7 @@ self.addEventListener('fetch', function(event) {
         </script>
     </head>
     <body>
-        おめでとうございます！キャッシュです！
+        おめでとうございます！キャッシュです！ 1
     </body>
 </html>
 `;
