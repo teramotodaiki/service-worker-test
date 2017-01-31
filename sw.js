@@ -18,7 +18,7 @@ self.addEventListener('fetch', function(event) {
         <meta charset="utf-8">
         <title>Service Worker Test</title>
         <script type="text/javascript">
-            alert('このアラートはキャッシュされたHTMLからのアレです！');
+            alert('v2/このアラートはキャッシュされたHTMLからのアレです！');
 
             if ('serviceWorker' in navigator) {
               navigator.serviceWorker.register('./sw.js').then(function(registration) {
