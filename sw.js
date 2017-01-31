@@ -1,6 +1,11 @@
 self.addEventListener('install', function(event) {
   // インストール処理
-  console.log('インストールできました!!');
+  console.log('install できました!!');
+});
+
+self.addEventListener('activate', function(event) {
+  // 有効化
+  console.log('activate できました!!');
 });
 
 self.addEventListener('fetch', function(event) {
@@ -14,6 +19,16 @@ self.addEventListener('fetch', function(event) {
         <title>Service Worker Test</title>
         <script type="text/javascript">
             alert('このアラートはキャッシュされたHTMLからのアレです！');
+
+            if ('serviceWorker' in navigator) {
+              navigator.serviceWorker.register('./sw.js').then(function(registration) {
+                // 登録成功
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+              }).catch(function(err) {
+                // 登録失敗 :(
+                console.log('ServiceWorker registration failed: ', err);
+              });
+            }
         </script>
     </head>
     <body>
