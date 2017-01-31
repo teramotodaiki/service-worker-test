@@ -33,7 +33,7 @@ self.addEventListener('fetch', function(event) {
         <script type="text/javascript">
             console.log('sw', 'serviceWorker' in navigator);
             if ('serviceWorker' in navigator) {
-              navigator.serviceWorker.register('./sw.js').then(function(registration) {
+              navigator.serviceWorker.register('./sw.js?_=${new Date().getTime()}').then(function(registration) {
                 // 登録成功
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
               }).catch(function(err) {
@@ -44,7 +44,7 @@ self.addEventListener('fetch', function(event) {
         </script>
     </head>
     <body>
-        おめでとうございます！キャッシュです！ 7
+        おめでとうございます！キャッシュです！ 8
     </body>
 </html>
 `;
