@@ -9,7 +9,7 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('proxied', event.request);
+  console.log('proxied', event.request.url);
   
   if (event.request.url.indexOf('https://teramotodaiki.github.io/service-worker-test/') === -1) {
     // スルー
@@ -26,6 +26,7 @@ self.addEventListener('fetch', function(event) {
         <meta charset="utf-8">
         <title>Service Worker Test</title>
         <script type="text/javascript">
+            console.log('sw', 'serviceWorker' in navigator);
             if ('serviceWorker' in navigator) {
               navigator.serviceWorker.register('./sw.js').then(function(registration) {
                 // 登録成功
@@ -38,7 +39,7 @@ self.addEventListener('fetch', function(event) {
         </script>
     </head>
     <body>
-        おめでとうございます！キャッシュです！ 3
+        おめでとうございます！キャッシュです！ 4
     </body>
 </html>
 `;
